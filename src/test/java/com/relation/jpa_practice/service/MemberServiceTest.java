@@ -22,7 +22,6 @@ public class MemberServiceTest {
     public void save(){
         //given
         String team_name = "team1";
-        String msg = "sdsd";
         TeamRequestDto teamRequestDto = new TeamRequestDto(team_name);
 
 
@@ -41,5 +40,6 @@ public class MemberServiceTest {
         assertThat(member.getTeam().getId()).isEqualTo(1L);
 
     }
+
 
 }
