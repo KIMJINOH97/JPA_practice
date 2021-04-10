@@ -3,7 +3,9 @@ package com.relation.jpa_practice.controller.dto;
 import com.relation.jpa_practice.domain.Team;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 public class TeamRequestDto {
