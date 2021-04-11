@@ -1,11 +1,15 @@
 package com.relation.jpa_practice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@NoArgsConstructor
+@Getter
 @Entity
-public class Like {
+public class LikeBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

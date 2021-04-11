@@ -26,7 +26,7 @@ public class Member {
     private Team team;
 
     @OneToMany(mappedBy = "member")
-    private List<Like> likes = new ArrayList<Like>();
+    private List<LikeBook> likeBooks = new ArrayList<LikeBook>();
 
     public Member(String name, int age){
         this.name = name;

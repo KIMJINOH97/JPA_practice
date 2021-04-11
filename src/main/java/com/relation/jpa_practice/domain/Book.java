@@ -18,5 +18,9 @@ public class Book {
     private String name;
 
     @OneToMany(mappedBy = "book")
-    private List<Like> likes = new ArrayList<Like>();
+    private List<LikeBook> likeBooks = new ArrayList<LikeBook>();
+
+    public Book(String name){
+        this.name = name;
+    }
 }
