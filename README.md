@@ -36,4 +36,4 @@
 # Relation(관계) ➡
 
 - Team 과 Member는 1:N 관계 이다. (Team은 여러 회원을 포함한다.)
-- Book 과 Member는 N:M 관계 이다. (
+- Book 과 Member는 N:M 관계 이다. (여러 회원은 여러 책을 좋아한다.)
