@@ -6,6 +6,8 @@ import com.relation.jpa_practice.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class BookService {
@@ -14,6 +16,10 @@ public class BookService {
     public Long saveBook(BookRequestDto requestDto){
         Book book = requestDto.toEntity();
         return bookRepository.save(book).getId();
+    }
+
+    public List<Book> findBooks(){
+        return bookRepository.findAll();
     }
 
 }
