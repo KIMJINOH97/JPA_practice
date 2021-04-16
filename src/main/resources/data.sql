@@ -2,6 +2,8 @@ insert into Team(`name`) values('team1');
 insert into Team(`name`) values('team2');
 insert into Team(`name`) values('team3');
 insert into Team(`name`) values('team4');
+insert into Team(`name`) values('team5');
+
 
 insert into Book(`name`) values('book1');
 insert into Book(`name`) values('book2');
