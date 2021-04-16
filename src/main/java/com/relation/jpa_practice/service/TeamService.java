@@ -1,5 +1,6 @@
 package com.relation.jpa_practice.service;
 
+import com.relation.jpa_practice.controller.dto.TeamListResponseDto;
 import com.relation.jpa_practice.controller.dto.TeamRequestDto;
 import com.relation.jpa_practice.controller.dto.TeamResponseDto;
 import com.relation.jpa_practice.domain.Member;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -31,8 +33,13 @@ public class TeamService {
     }
 
     @Transactional(readOnly = true)
-    public List<Team> findall(){
-        return teamRepository.findAll();
+    public List<TeamListResponseDto> findall(){
+        List<Team> all = teamRepository.findAll();
+        List<TeamListResponseDto> responseDtos = new ArrayList<TeamListResponseDto>();
+        for (Team team : all){
+            responseDtos.add(new TeamListResponseDto(team));
+        }
+        return responseDtos;
     }
 
     @Transactional(readOnly = true)
@@ -40,10 +47,10 @@ public class TeamService {
         return teamRepository.findById(id).get().getMembers();
     }
 
+    // 팀 이름으로 소속 멤버를 찾음
     @Transactional(readOnly = true)
-    public List<Member> findByName(String name){
-        Team team = teamRepository.findByName(name);
-        return team.getMembers();
+    public TeamResponseDto findByTeamName(String name){
+        return new TeamResponseDto(teamRepository.findByTeamName(name));
     }
 
 }
