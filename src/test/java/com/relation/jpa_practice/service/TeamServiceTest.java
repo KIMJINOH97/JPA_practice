@@ -1,10 +1,7 @@
 package com.relation.jpa_practice.service;
 
 
-import com.relation.jpa_practice.controller.dto.MemberRequestDto;
-import com.relation.jpa_practice.controller.dto.TeamListResponseDto;
-import com.relation.jpa_practice.controller.dto.TeamRequestDto;
-import com.relation.jpa_practice.controller.dto.TeamResponseDto;
+import com.relation.jpa_practice.controller.dto.*;
 import com.relation.jpa_practice.domain.Member;
 import com.relation.jpa_practice.domain.Team;
 import com.relation.jpa_practice.repository.MemberRepository;
@@ -82,6 +79,30 @@ public class TeamServiceTest {
         //then
         TeamResponseDto findTeam = teamService.findByTeamName(new_team);
         assertThat(findTeam.getName()).isEqualTo(new_team);
+
+    }
+
+    @Test
+    public void findTeamMembers(){
+        //given
+        String m_name = "ji young";
+        String m_name2 = "ji ji";
+        int age = 24;
+
+        Team team = teamRepository.findById(5L).get();
+        Member member1 = new Member(m_name, age);
+        Member member2 = new Member(m_name2, age);
+
+        member2.setTeam(team);
+        member1.setTeam(team);
+
+        //when
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+        //then
+        List<MemberResponseDto> teamMembers = teamService.findTeamMembers(5L);
+        assertThat(teamMembers.size()).isEqualTo(2);
 
     }
 

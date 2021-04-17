@@ -1,5 +1,6 @@
 package com.relation.jpa_practice.service;
 
+import com.relation.jpa_practice.controller.dto.MemberResponseDto;
 import com.relation.jpa_practice.controller.dto.TeamListResponseDto;
 import com.relation.jpa_practice.controller.dto.TeamRequestDto;
 import com.relation.jpa_practice.controller.dto.TeamResponseDto;
@@ -43,8 +44,13 @@ public class TeamService {
     }
 
     @Transactional(readOnly = true)
-    public List<Member> findMember(Long id){
-        return teamRepository.findById(id).get().getMembers();
+    public List<MemberResponseDto> findTeamMembers(Long id){
+        List<Member> members= teamRepository.findById(id).get().getMembers();
+        List<MemberResponseDto> responseDtos = new ArrayList<MemberResponseDto>();
+        for (Member member: members){
+            responseDtos.add(new MemberResponseDto(member));
+        }
+        return responseDtos;
     }
 
     // 팀 이름으로 소속 멤버를 찾음
