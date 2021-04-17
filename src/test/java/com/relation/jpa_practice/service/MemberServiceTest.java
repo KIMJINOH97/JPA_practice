@@ -21,7 +21,7 @@ public class MemberServiceTest {
     @Test
     public void save(){
         //given
-        String team_name = "team1";
+        String team_name = "new_team";
         TeamRequestDto teamRequestDto = new TeamRequestDto(team_name);
 
 
