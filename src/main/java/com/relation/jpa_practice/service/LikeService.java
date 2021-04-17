@@ -1,5 +1,6 @@
 package com.relation.jpa_practice.service;
 
+import com.relation.jpa_practice.controller.dto.LikeBookResponseDto;
 import com.relation.jpa_practice.domain.Book;
 import com.relation.jpa_practice.domain.LikeBook;
 import com.relation.jpa_practice.domain.Member;
@@ -8,6 +9,9 @@ import com.relation.jpa_practice.repository.LikeRepository;
 import com.relation.jpa_practice.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -23,6 +27,15 @@ public class LikeService {
         likeBook.setMember(member);
         likeBook.setBook(book);
         return likeRepository.save(likeBook).getId();
+    }
+
+    public List<LikeBookResponseDto> findLikes(){
+        List<LikeBook> likes = likeRepository.findAll();
+        List<LikeBookResponseDto> responseDtos = new ArrayList<>();
+        for (LikeBook like  : likes){
+            responseDtos.add(new LikeBookResponseDto(like));
+        }
+        return responseDtos;
     }
 
 
