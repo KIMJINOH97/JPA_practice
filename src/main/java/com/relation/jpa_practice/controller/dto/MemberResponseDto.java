@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 public class MemberResponseDto {
     private String name;
     private String teamName;
+    private AddressResponseDto address;
 
     public MemberResponseDto(Member member){
         this.name = member.getName();
         this.teamName = member.getTeam().getName();
+        this.address = new AddressResponseDto(member.getAddress());
     }
 }
