@@ -2,7 +2,7 @@
 
 ### ERD를 토대로 테이블 작성 해보는 연습
 
-<img width="761" alt="JPA_ERD 2021-04-12 오후 6 35 30" src="https://user-images.githubusercontent.com/62155304/114374494-a76d9400-9bbe-11eb-8885-475b82ce405b.png">
+![image](https://user-images.githubusercontent.com/62155304/115137542-b0001780-a061-11eb-8094-34043e02a403.png)
 
 ## 🔍 Table 설명
 
