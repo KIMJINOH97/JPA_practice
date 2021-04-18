@@ -20,6 +20,9 @@ public class Member {
     private String name;
     private int age;
 
+    @Embedded
+    private Address address;
+
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "team_id")
@@ -28,9 +31,10 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<LikeBook> likeBooks = new ArrayList<LikeBook>();
 
-    public Member(String name, int age){
+    public Member(String name, int age, Address address){
         this.name = name;
         this.age = age;
+        this.address = address;
     }
 
     public void setTeam(Team team){
