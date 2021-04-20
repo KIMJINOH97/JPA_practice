@@ -1,7 +1,9 @@
 package com.relation.jpa_practice.service;
 
 
+import com.relation.jpa_practice.controller.dto.AddressResponseDto;
 import com.relation.jpa_practice.controller.dto.MemberRequestDto;
+import com.relation.jpa_practice.domain.Address;
 import com.relation.jpa_practice.domain.Book;
 import com.relation.jpa_practice.domain.LikeBook;
 import com.relation.jpa_practice.domain.Team;
@@ -28,10 +30,12 @@ public class LikeBookServiceTest {
         String t_name = "team1";
         String m_name = "member1";
         String b_name = "book1";
+        AddressResponseDto address = new AddressResponseDto("서울", "마포", "상수");
+
         int age = 24;
 
         Team team = new Team(t_name);
-        MemberRequestDto requestDto = new MemberRequestDto(m_name, age);
+        MemberRequestDto requestDto = new MemberRequestDto(m_name, age, address);
         Book book = new Book(b_name);
 
         //when

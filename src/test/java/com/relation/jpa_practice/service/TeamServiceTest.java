@@ -2,6 +2,7 @@ package com.relation.jpa_practice.service;
 
 
 import com.relation.jpa_practice.controller.dto.*;
+import com.relation.jpa_practice.domain.Address;
 import com.relation.jpa_practice.domain.Member;
 import com.relation.jpa_practice.domain.Team;
 import com.relation.jpa_practice.repository.MemberRepository;
@@ -88,10 +89,12 @@ public class TeamServiceTest {
         String m_name = "ji young";
         String m_name2 = "ji ji";
         int age = 24;
+        Address address = new Address("서울", "마포", "상수");
+
 
         Team team = teamRepository.findById(5L).get();
-        Member member1 = new Member(m_name, age);
-        Member member2 = new Member(m_name2, age);
+        Member member1 = new Member(m_name, age, address);
+        Member member2 = new Member(m_name2, age, address);
 
         member2.setTeam(team);
         member1.setTeam(team);
