@@ -1,0 +1,27 @@
+{{>layout/header}}
+
+<h1>Hello spring boot</h1>
+<div class="col-md-12">
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th>순번</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>속한 팀</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#members}}
+            <tr>
+                <td>{{id}}</td>
+                <td><a href="/get/member/{{id}}">{{name}}</a></td>
+                <td>{{age}}</td>
+                <td>{{teamName}}</td>
+            </tr>
+        {{/members}}
+        </tbody>
+    </table>
+    <div>dfk</div>
+</div>
+{{>layout/footer}}
