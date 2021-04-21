@@ -1,6 +1,7 @@
 package com.relation.jpa_practice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.relation.jpa_practice.controller.dto.MemberUpdateDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -28,7 +29,7 @@ public class Member {
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<LikeBook> likeBooks = new ArrayList<LikeBook>();
 
     public Member(String name, int age, Address address){
@@ -38,7 +39,22 @@ public class Member {
     }
 
     public void setTeam(Team team){
+        team.getMembers().add(this);
         this.team = team;
     }
 
+    public void update(MemberUpdateDto dto){
+        this.name = dto.getName();
+        this.age = dto.getAge();
+        this.address = new Address(dto.getCity(), dto.getGu(), dto.getDong());
+    }
+
+    public void updateTeam(Team team){
+        this.team.getMembers().remove(this);
+        this.team = team;
+    }
+
+    public void deleteTeam(){
+        this.team = null;
+    }
 }
