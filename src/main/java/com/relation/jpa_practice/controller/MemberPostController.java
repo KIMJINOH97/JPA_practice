@@ -7,6 +7,7 @@ import com.relation.jpa_practice.controller.dto.MemberUpdateDto;
 import com.relation.jpa_practice.domain.Member;
 import com.relation.jpa_practice.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,15 +21,15 @@ public class MemberPostController {
     private final MemberService memberService;
 
     // 회원 요청
-    @PostMapping("/member/{team_id}")
-    public ApiForm<Long> save(@PathVariable Long team_id, @RequestBody MemberRequestDto requestDto){
-        return succed(memberService.save(team_id, requestDto));
+    @PostMapping("/member")
+    public ResponseEntity<Long> save(@RequestBody MemberRequestDto requestDto){
+        return ResponseEntity.ok(memberService.save(requestDto));
     }
 
     // 회원 정보 수정
     @PutMapping("/member/{id}")
-    public ApiForm<MemberResponseDto> updateMember(@PathVariable Long id, @RequestBody MemberUpdateDto updateDto){
-        return succed(memberService.updateMember(id, updateDto));
+    public ResponseEntity<MemberResponseDto> updateMember(@PathVariable Long id, @RequestBody MemberUpdateDto updateDto){
+        return ResponseEntity.ok((memberService.updateMember(id, updateDto)));
     }
 
     // 회원 삭제

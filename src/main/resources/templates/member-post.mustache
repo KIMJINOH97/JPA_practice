@@ -1,0 +1,38 @@
+{{>layout/header}}
+
+<h1>회원 등록</h1>
+
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="title">이름</label>
+                <input type="text" class="form-control" id="m_name" placeholder="제목을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="author"> 나이 </label>
+                <input type="text" class="form-control" id="m_age" placeholder="작성자를 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="content"> 도시 </label>
+                <textarea class="form-control" id="m_city" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="content"> 구 </label>
+                <textarea class="form-control" id="m_gu" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="content"> 동 </label>
+                <textarea class="form-control" id="m_dong" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="content"> 속한 팀 </label>
+                <textarea class="form-control" id="m_team" placeholder="내용을 입력하세요"></textarea>
+            </div>
+        </form>
+        <a href="/" role="button" class="btn btn-secondary">취소</a>
+        <button type="button" class="btn btn-primary" id="btn-enroll">등록</button>
+    </div>
+</div>
+
+{{>layout/footer}}

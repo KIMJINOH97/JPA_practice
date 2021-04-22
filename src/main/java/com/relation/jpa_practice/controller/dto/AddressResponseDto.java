@@ -5,16 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class AddressResponseDto {
     private String city;
-    private String dong;
     private String gu;
+    private String dong;
 
     public AddressResponseDto(Address address){
         this.city = address.getCity();
-        this.dong = address.getDong();
         this.gu = address.getGu();
+        this.dong = address.getDong();
     }
 }

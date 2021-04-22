@@ -22,9 +22,8 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public Long save(Long team_id ,MemberRequestDto requestDto){
-        Team team = teamRepository.findById(team_id).orElseThrow(() ->
-                new IllegalArgumentException("존재하지 않는 ID 입니다."));
+    public Long save(MemberRequestDto requestDto){
+        Team team = teamRepository.findByTeamName(requestDto.getTeamName());
         Member member = requestDto.toEntity();
         member.setTeam(team);
         return memberRepository.save(member).getId();

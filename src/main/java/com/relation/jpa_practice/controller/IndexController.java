@@ -5,6 +5,7 @@ import com.relation.jpa_practice.controller.dto.MemberUpdateDto;
 import com.relation.jpa_practice.domain.Member;
 import com.relation.jpa_practice.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.GeneratorType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,11 @@ public class IndexController {
         MemberResponseDto member = memberService.findById(id);
         model.addAttribute("member", member);
         return "memberInfo";
+    }
+
+    @GetMapping("/enroll/member")
+    public String postMember(){
+        return "member-post";
     }
 
     @GetMapping("/hello")
