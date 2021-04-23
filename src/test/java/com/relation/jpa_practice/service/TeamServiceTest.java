@@ -63,7 +63,7 @@ public class TeamServiceTest {
 
     @Test
     public void findAll(){
-        List<TeamListResponseDto> teamList = teamService.findall();
+        List<Team> teamList = teamRepository.findAll();
         assertThat(teamList.size()).isEqualTo(5);
     }
 
@@ -85,6 +85,42 @@ public class TeamServiceTest {
 
     @Test
     public void findTeamMembers(){
+        //given
+        String m_name = "ji young";
+        String m_name2 = "ji ji";
+        int age = 24;
+        Address address = new Address("서울", "마포", "상수");
+
+
+        Team team = teamRepository.findById(5L).get();
+        //System.out.println("팀 회원 크기: " + team.getMembers().size());
+
+        Member member1 = new Member(m_name, age, address);
+        Member member2 = new Member(m_name2, age, address);
+
+        member2.setTeam(team);
+        member1.setTeam(team);
+        //System.out.println("넣은 뒤 사이즈" + team.getMembers().size());
+        //when
+        memberRepository.save(member1);
+        //System.out.println("넣은 뒤 사이즈" + team.getMembers().size());
+        memberRepository.save(member2);
+        //System.out.println("넣은 뒤 사이즈" + team.getMembers().size());
+        //then
+        List<MemberResponseDto> teamMembers = teamService.findTeamMembers(5L);
+
+        for (MemberResponseDto mr : teamMembers){
+            System.out.println(mr.getId() + mr.getName());
+        }
+
+        assertThat(teamMembers.size()).isEqualTo(3);
+//        Optional<Team> byId = teamRepository.findById(5L);
+  //      System.out.println(byId.get().getMembers().size());
+
+    }
+
+    @Test
+    public void findTeamMember(){
         //given
         String m_name = "ji young";
         String m_name2 = "ji ji";
